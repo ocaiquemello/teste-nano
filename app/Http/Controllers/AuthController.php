@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Exception;
-use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,34 +15,32 @@ class AuthController extends Controller
 
         if($user)
         {
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('admin.index');
         }
 
-        return view('index');
+        return redirect()->route('index');
     }
 
     public function auth(Request $request)
     {
         $request->validate([
-            'email' => 'required',
+            'login' => 'required',
             'password' => 'required',
         ]);
 
         try
         {
-            $credentials = $request->only('email', 'password');
+            $credentials = $request->only('login', 'password');
 
             if (Auth::attempt($credentials))
             {
-                $user = auth()->user();
-
-                return redirect()->route('admin.dashboard');
+                return redirect()->route('admin.index');
             }
 
-            return redirect('index')->with('error', "Login inválido! Consulte o administrador do sistema.");
+            return redirect()->route('index')->with('error', "Login inválido! Consulte o administrador do sistema.");
         } catch (Exception $e)
         {
-            return redirect('index')->with('error', $e->getMessage());
+            return redirect()->route('index')->with('error', $e->getMessage());
         }
     }
 
@@ -51,6 +49,6 @@ class AuthController extends Controller
         Session::flush();
         Auth::logout();
 
-        return redirect('login')->with('success', 'Deslogado com sucesso!');
+        return redirect()->route('index')->with('success', 'Deslogado com sucesso!');
     }
 }
