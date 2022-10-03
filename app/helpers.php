@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Employee;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 
 function greeting()
@@ -53,6 +54,13 @@ function listEmployees()
     return Employee::paginate(15);
 }
 
+function listTransactions()
+{
+    $transaction = Transaction::with('employee')->paginate(15)->sortByDesc('created_at');
+    //dd($transaction);
+    return $transaction;
+}
+
 function formatCurrentBalance($value)
 {
     return str_replace(['','.'], ['.',','], $value);
@@ -61,4 +69,9 @@ function formatCurrentBalance($value)
 function formatDate($value)
 {
     return date('d/m/Y H:i:s', strtotime($value));
+}
+
+function formatType($value)
+{
+    return $value === 'entrada' ? 'Entrada' : 'Saída';
 }

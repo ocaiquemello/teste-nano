@@ -18,4 +18,9 @@ class Employee extends Model
     {
         $this->attributes['current_balance'] = str_replace(['.',','], ['','.'], $value);
     }
+
+    public function transaction()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

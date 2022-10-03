@@ -20,10 +20,10 @@
                         <div class="col-xl-12">
                             <div class="widget widget-07 has-shadow">
                                 <div class="widget-header bordered d-flex align-items-center">
-                                    <h2>Funcionários</h2>
+                                    <h2>Movimentações</h2>
                                     <div class="widget-options">
                                         <div class="btn-group" role="group">
-                                            <a href="{{ route('admin.employee.create') }}" class="btn btn-primary ripple">Novo</a>
+                                            <a href="{{ route('admin.transaction.create') }}" class="btn btn-primary ripple">Nova</a>
                                         </div>
                                     </div>
                                 </div>
@@ -33,30 +33,28 @@
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Nome</th>
-                                                    <th>Saldo Atual</th>
-                                                    <th>Data da Criação</th>
-                                                    <th>Ações</th>
+                                                    <th>Valor</th>
+                                                    <th>Tipo</th>
+                                                    <th>Observação</th>
+                                                    <th>Funcionário</th>
+                                                    <th>Data de Criação</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @if($employees->isNotEmpty())
-                                                    @foreach($employees as $employee)
+                                                @if($transactions->isNotEmpty())
+                                                    @foreach($transactions as $transaction)
                                                         <tr>
-                                                            <td><span class="text-primary">{{ $employee->id }}</span></td>
-                                                            <td>{{ $employee->name }}</td>
-                                                            <td>{{ formatCurrentBalance($employee->current_balance) }}</td>
-                                                            <td>{{ formatDate($employee->created_at) }}</td>
-                                                            <td class="td-actions">
-                                                                <a href="{{ route('admin.employee.edit', [$employee->id]) }}"><i class="la la-edit edit"></i></a>
-                                                                <a href="{{ route('admin.employee.delete', [$employee->id]) }}" onclick="return confirm('Tem certeza que deseja deletar esse funcionário?')"><i class="la la-close delete"></i></a>
-                                                                <a href="{{ route('admin.transaction.extract', [$employee->id]) }}"><i class="la la-money money"></i></a>
-                                                            </td>
+                                                            <td><span class="text-primary">{{ $transaction->id }}</span></td>
+                                                            <td>{{ formatCurrentBalance($transaction->value) }}</td>
+                                                            <td>{{ formatType($transaction->type) }}</td>
+                                                            <td>{{ $transaction->observation }}</td>
+                                                            <td>{{ $transaction->employee->name }}</td>
+                                                            <td>{{ formatDate($transaction->created_at) }}</td>
                                                         </tr>
                                                     @endforeach
                                                 @else
                                                     <tr>
-                                                        <td>Não existem funcionários registrados no momento. Registre um <a href="{{ route('admin.employee.create') }}">clicando aqui</a>.</td>
+                                                        <td>Não existem transações registradas no momento. Registre uma <a href="{{ route('admin.transaction.create') }}">clicando aqui</a>.</td>
                                                     </tr>
                                                 @endif
                                             </tbody>
