@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Employee;
 use Illuminate\Support\Facades\Route;
 
 function greeting()
@@ -23,22 +24,41 @@ function avatar()
     return $auth->path ? $auth->path : mix('assets/images/blank.png');
 }
 
-function getCurrentRoute()
+function getCurrentRoute($route)
 {
    $currentRoute = Route::currentRouteName();
 
-    switch ($currentRoute) {
-        case 'admin.index':
-            return 'active';
-            break;
-        case 'admin.user.create':
-            return 'active';
-            break;
-        case 'admin.user.edit':
-            return 'active';
-                break;
-        default:
-            return '';
-            break;
-    }
+   if($currentRoute === $route)
+   {
+        return 'active';
+   }
+
+   return '';
+
+    // switch ($currentRoute) {
+    //     case 'admin.employee.index':
+    //         return 'active';
+    //         break;
+    //     case 'admin.employee.register':
+    //         return 'active';
+    //         break;
+    //     default:
+    //         return '';
+    //         break;
+    // }
+}
+
+function listEmployees()
+{
+    return Employee::paginate(15);
+}
+
+function formatCurrentBalance($value)
+{
+    return str_replace(['','.'], ['.',','], $value);
+}
+
+function formatDate($value)
+{
+    return date('d/m/Y H:i:s', strtotime($value));
 }

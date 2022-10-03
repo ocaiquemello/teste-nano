@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,4 +24,11 @@ Route::post('/auth', [AuthController::class, 'auth'])->name('auth');
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/admin/employees', [EmployeeController::class, 'index'])->name('admin.employee.index');
+    Route::get('/admin/employees/create', [EmployeeController::class, 'register'])->name('admin.employee.register');
+    Route::get('/admin/employees/edit/{id}', [EmployeeController::class, 'edit'])->name('admin.employee.edit');
+    Route::post('/admin/employees/edit/{id}', [EmployeeController::class, 'update'])->name('admin.employee.update');
+    Route::post('/admin/employees/create', [EmployeeController::class, 'create'])->name('admin.employee.create');
+    Route::get('/admin/employees/delete/{id}', [EmployeeController::class, 'delete'])->name('admin.employee.delete');
+
 });

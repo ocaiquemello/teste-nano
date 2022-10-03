@@ -8,6 +8,8 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        $employees = listEmployees();
+
+        return view('admin.index', compact('employees'));
     }
 }

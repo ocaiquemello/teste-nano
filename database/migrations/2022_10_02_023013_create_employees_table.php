@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('login')->unique();
             $table->string('password');
-            $table->decimal('curent_balance', 8, 2);
+            $table->decimal('current_balance', 8, 2);
             $table->foreignId('admin_id');
             $table->foreign('admin_id')
                 ->references('id')

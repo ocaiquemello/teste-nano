@@ -2,10 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'name',
+        'login',
+        'password',
+        'current_balance',
+        'admin_id'
+    ];
+
+    public function setCurrentBalanceAttribute($value)
+    {
+        $this->attributes['current_balance'] = str_replace(['.',','], ['','.'], $value);
+    }
 }

@@ -99,6 +99,8 @@
     "/assets/vendor/js/datatables/vfs_fonts.js": "/assets/vendor/js/datatables/vfs_fonts.js",
     "/assets/vendor/js/datepicker/daterangepicker.js": "/assets/vendor/js/datepicker/daterangepicker.js",
     "/assets/vendor/js/datepicker/moment.min.js": "/assets/vendor/js/datepicker/moment.min.js",
+    "/assets/vendor/js/jquery-mask/jquery.mask.js": "/assets/vendor/js/jquery-mask/jquery.mask.js",
+    "/assets/vendor/js/jquery-mask/jquery.mask.min.js": "/assets/vendor/js/jquery-mask/jquery.mask.min.js",
     "/assets/vendor/js/leaflet/leaflet.js": "/assets/vendor/js/leaflet/leaflet.js",
     "/assets/vendor/js/leaflet/leaflet.min.js": "/assets/vendor/js/leaflet/leaflet.min.js",
     "/assets/vendor/js/lity/lity.js": "/assets/vendor/js/lity/lity.js",

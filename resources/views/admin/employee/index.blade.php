@@ -1,11 +1,11 @@
 @include('admin.partials.head')
 
 <body id="page-top">
-    <div id="preloader">
+    <!-- <div id="preloader">
         <div class="canvas">
             <img src="{{ mix('assets/images/logo.png') }}" alt="logo" class="loader-logo">
             <div class="spinner"></div>
-        </div>
+        </div> -->
     </div>
 
     <div class="page">
@@ -16,13 +16,16 @@
 
             <div class="content-inner">
                 <div class="container-fluid">
-                    @include('admin.partials.page-header')
-
                     <div class="row flex-row">
                         <div class="col-xl-12">
                             <div class="widget widget-07 has-shadow">
                                 <div class="widget-header bordered d-flex align-items-center">
-                                    <h2>Funcionários - Visão Geral</h2>
+                                    <h2>Funcionários</h2>
+                                    <div class="widget-options">
+                                        <div class="btn-group" role="group">
+                                            <a href="{{ route('admin.employee.create') }}" class="btn btn-primary ripple">Novo</a>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="widget-body">
                                     <div class="table-responsive table-scroll padding-right-10" style="max-height:520px;">
