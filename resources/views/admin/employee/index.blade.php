@@ -63,28 +63,21 @@
                                         </table>
                                     </div>
                                 </div>
-                                <!-- <div class="widget-footer d-flex align-items-center">
-                                    <div class="mr-auto p-2">
-                                        <span class="display-items">Showing 1-30 / 150 Results</span>
-                                    </div>
+                                <div class="widget-footer d-flex align-items-center">
                                     <div class="p-2">
                                         <nav aria-label="...">
                                             <ul class="pagination justify-content-end">
                                                 <li class="page-item disabled">
                                                     <span class="page-link"><i class="ion-chevron-left"></i></span>
                                                 </li>
-                                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                <li class="page-item active">
-                                                    <span class="page-link">2<span class="sr-only">(current)</span></span>
-                                                </li>
-                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                {{ $employees->links() }}
                                                 <li class="page-item">
                                                     <a class="page-link" href="#"><i class="ion-chevron-right"></i></a>
                                                 </li>
                                             </ul>
                                         </nav>
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
                         </div>
                     </div>
